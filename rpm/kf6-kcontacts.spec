@@ -26,6 +26,9 @@ BuildRequires: qt6-qtdeclarative-devel
 
 #BuildRequires:  pkgconfig(Qt6TextToSpeech)
 
+Requires(post): /sbin/ldconfig
+Requires(postun): /sbin/ldconfig
+
 %description
 %{summary}.
 
@@ -53,6 +56,9 @@ Developer Documentation files for %{name} for use with KDevelop or QtCreator.
 %cmake_install
 
 %find_lang kcontacts6
+
+%post -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
 
 %files -f kcontacts6.lang
 %doc README.md
